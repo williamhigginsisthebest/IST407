@@ -60,7 +60,9 @@ basePlot = (p9.ggplot(data=df,
            mapping=p9.aes(x='School', y=' Very Ahead +5')))
 
 basePlot + p9.geom_point()
+basePlot + p9.geom_point()
+
+
 
 
 #find way to divde total count of row with number of sections that go into it. it is mean
-# %%
