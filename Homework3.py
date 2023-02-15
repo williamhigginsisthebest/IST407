@@ -40,6 +40,12 @@ df = df.drop('age', axis = 1)
 df = df.drop('income', axis = 1)
     #axis 1 is for columns, axis 0 is for rows
 
+df.astype({'children':'category'}).dtypes
+df
+
+
+transactions_from_df = [tuple(row) for row in pd_df.values.tolist()]
+
 #with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 #    print(df)
 
@@ -47,12 +53,12 @@ df = df.drop('income', axis = 1)
 #Transforming dataset into transcational matrix
 #array = TransactionEncoder.fit(bankCSV).transform(bankCSV)
 te = TransactionEncoder()
-te_ary = te.fit(bankList).transform(bankList)
-df = pd.DataFrame(te_ary, columns=te.columns_)
-print(df)
+te_ary = te.fit(df).transform(df)
+te_df = pd.DataFrame(te_ary, columns=te.columns_)
+print(te_df)
 
 # %%
-frequent_itemsets = apriori(df, min_support = .3, use_colnames = True)
+frequent_itemsets = apriori(te_df, min_support = .01, use_colnames = True)
     #This finds the frequently occuring itemsets using Apriori
 rules = association_rules(frequent_itemsets, metric= "confidence", min_threshold = 0.8)
 print(rules)
