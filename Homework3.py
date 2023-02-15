@@ -63,7 +63,7 @@ print(te_df)
 frequent_itemsets = apriori(te_df, min_support = .01, use_colnames = True)
     #This finds the frequently occuring itemsets using Apriori
 rules = association_rules(frequent_itemsets, metric= "confidence", min_threshold = 0.8)
-print(rules)
+rules.head()
 # %%
 
 
