@@ -35,17 +35,19 @@ df = df.replace({'save_act': {'NO': 'No_Save_Act', 'YES' : 'Has_Save_Act'}})
 df = df.replace({'current_act': {'NO': 'No_Current_Act', 'YES' : 'Has_Current_Act'}})
 df = df.replace({'mortgage': {'NO': 'No_Mortgage', 'YES' : 'Has_Mortgage'}})
 df = df.replace({'pep': {'NO': 'No_Pep', 'YES' : 'Has_Pep'}})
+df = df.replace({'children' : {0 : '0 children', 1 : '1 children', 2 : '2 children', 3 : '3 children', 4 : '4 children', 5 : '5 children'}})
 df = df.drop('id', axis = 1)
 df = df.drop('age', axis = 1)
 df = df.drop('income', axis = 1)
     #axis 1 is for columns, axis 0 is for rows
 
-df.astype({'children':'category'}).dtypes
-df
+df = df.astype('category')
+pd_df = df
 
 
 transactions_from_df = [tuple(row) for row in pd_df.values.tolist()]
-
+test_df = [str(x) for x in transactions_from_df]
+print(test_df)
 #with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 #    print(df)
 
@@ -53,7 +55,7 @@ transactions_from_df = [tuple(row) for row in pd_df.values.tolist()]
 #Transforming dataset into transcational matrix
 #array = TransactionEncoder.fit(bankCSV).transform(bankCSV)
 te = TransactionEncoder()
-te_ary = te.fit(df).transform(df)
+te_ary = te.fit(transactions_from_df).transform(transactions_from_df)
 te_df = pd.DataFrame(te_ary, columns=te.columns_)
 print(te_df)
 
