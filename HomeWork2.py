@@ -66,3 +66,20 @@ basePlot + p9.geom_point()
 
 
 #find way to divde total count of row with number of sections that go into it. it is mean
+
+
+
+
+
+
+
+# %%
+#https://www.datacamp.com/tutorial/association-rule-mining-python
+    #It explains lift in a easy to understand way
+#NOTE: Cannot install pycaret if your python version is not right. Use 3.8 or lower if you still want it.
+    #Or you can do this. 
+        #pip install -U --pre pycaret --user
+    #Make sure you have at least 2015 visual studio dist package
+#https://medium.com/@mervetorkan/association-rules-with-python-9158974e761a
+
+#https://www.codeforests.com/2020/08/30/pandas-split-data-into-buckets/
