@@ -31,7 +31,8 @@ df = df.drop('income', axis = 1)
 df = df.astype('category')
 pd_df = df
 transactions_from_df = [tuple(row) for row in pd_df.values.tolist()]
-test_df = [str(x) for x in transactions_from_df]
+#test_df = [str(x) for x in transactions_from_df]
+    #unneeded
 # %%
 #Transforming dataset into transcational matrix
 te = TransactionEncoder()
